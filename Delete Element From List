@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+int n, delete_element;
+
+    
+    scanf("%d", &n);
+
+    
+    if (n < 1 || n > 100) {
+        return 1; 
+    }
+
+    
+    int list[n];
+
+   
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &list[i]);
+    }
+
+   
+    scanf("%d", &delete_element);
+
+    
+    int found_index = -1; 
+    for (int i = 0; i < n; i++) {
+        if (list[i] == delete_element) {
+            found_index = i;
+            break; 
+        }
+    }
+
+    
+    if (found_index != -1) {
+        for (int i = found_index; i < n - 1; i++) {
+            list[i] = list[i + 1];
+        }
+        n--; 
+    }
+
+    
+    for (int i = 0; i < n; i++) {
+        printf("%d", list[i]);
+        if (i < n - 1) {
+            printf(" "); 
+        }
+    }
+    printf("\n");
+       
+ 
+    return 0;
+}

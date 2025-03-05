@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int removeElement(int* nums, int numsSize, int val) {
+    int k = 0; // k will track the index for non-val elements
+
+    for (int i = 0; i < numsSize; i++) {
+        if (nums[i] != val) {
+            nums[k] = nums[i]; // Move non-val elements to the front
+            k++;
+        }
+    }
+    return k; // Return the number of elements not equal to val
+}
+
+int main() {
+    int n, val;
+
+    // Read list size
+    scanf("%d", &n);
+
+    // Check constraint
+    if (n < 1 || n > 100) {
+        return 1; // Exit with an error code if constraint is violated
+    }
+
+    // Create the list (array)
+    int nums[n];
+
+    // Read list elements
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &nums[i]);
+    }
+
+    // Read element to remove
+    scanf("%d", &val);
+
+    int k = removeElement(nums, n, val);
+
+    // Print the modified array
+    for (int i = 0; i < k; i++) {
+        printf("%d", nums[i]);
+        if (i < k - 1) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
